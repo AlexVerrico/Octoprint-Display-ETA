@@ -9,6 +9,9 @@ class HelloWorldPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.TemplatePlugin,
                        octoprint.plugin.AssetPlugin,
                        octoprint.plugin.SettingsPlugin):
+    def __init__(self):
+        self.isRaspi = True
+        self.raspiTemp = 42
     def on_print_progress(self,storage, path, progress):
         currentData = self._printer.get_current_data()
         eta_strftime = "%H %M %S Day %d"
