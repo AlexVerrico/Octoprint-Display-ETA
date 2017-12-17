@@ -1,7 +1,7 @@
 $(function() {
     function ETAModel(parameters) {
         var self = this;
-        self.ETA = ko.observable("NA");
+        self.ETA = ko.observable("-");
         self.onBeforeBinding = function() {
             var element = $("#state").find(".accordion-inner .progress");
             if (element.length) {
