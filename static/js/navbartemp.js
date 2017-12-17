@@ -41,6 +41,6 @@ $(function() {
     ADDITIONAL_VIEWMODELS.push([
         NavbarTempViewModel, 
         ["temperatureViewModel", "settingsViewModel"],
-        ["#navbar_plugin_navbartemp", "#settings_plugin_navbartemp"]
+        ["#navbar_plugin_helloworld", "#settings_plugin_helloworld"]
     ]);
 });
