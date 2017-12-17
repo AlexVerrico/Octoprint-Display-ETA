@@ -1,10 +1,13 @@
 $(function() {
     function NavbarTempViewModel(parameters) {
         var self = this;
-
-        self.navBarTempModel = parameters[0];
-        self.global_settings = parameters[1];
-
+        self.ETA = ko.observable("NA");
+        self.onDataUpdaterPluginMessage = function(plugin, data) {
+            if (plugin != "helloworld") {
+                return;
+            }
+            self.ETA(data.eta_string);
+        };
     }
 
     ADDITIONAL_VIEWMODELS.push([

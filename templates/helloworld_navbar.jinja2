@@ -1,10 +1,2 @@
+<p class="nav navbar-text" data-bind="html: ETA"></p>
 
-<div data-bind="visible: true" class="nav">
-    <!-- ko foreach: navBarTempModel.tools -->
-    <p class="nav navbar-text" data-bind="template: { name: 'helloworld-template' }"></p>
-    <!-- /ko -->
-</div>
-
-<script type="text/html" id="helloworld-template">
-    <span data-bind="html: actual()"></span>
-</script>

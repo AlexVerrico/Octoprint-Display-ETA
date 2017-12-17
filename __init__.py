@@ -10,18 +10,14 @@ class HelloWorldPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.AssetPlugin,
                        octoprint.plugin.SettingsPlugin):
     def __init__(self):
-        self.isRaspi = True
-        self.raspiTemp = 42
+        self.eta_string = "nada"
     def on_print_progress(self,storage, path, progress):
         currentData = self._printer.get_current_data()
         eta_strftime = "%H %M %S Day %d"
-        self._logger.info("Hello World! %s" % time.strftime(eta_strftime, time.localtime(time.time() + currentData["progress"]["printTimeLeft"])))
-	##~~ TemplatePlugin API
-    #def get_template_configs(self):
-    #        return [dict(type="settings", template="navbartemp_settings_raspi.jinja2")]
+        self.eta_string=time.strftime(eta_strftime, time.localtime(time.time() + currentData["progress"]["printTimeLeft"]))
+        self._plugin_manager.send_plugin_message(self._identifier, dict(eta_string=self.eta_string))
+        self._logger.info("Hello World! %s" % self.eta_string)
 
-
-    ##~~ AssetPlugin API
     def get_assets(self):
         return {
             "js": ["js/navbartemp.js"],
