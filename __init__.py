@@ -5,10 +5,8 @@ import octoprint.plugin
 import time
 
 class HelloWorldPlugin(octoprint.plugin.ProgressPlugin,
-                       octoprint.plugin.StartupPlugin,
                        octoprint.plugin.TemplatePlugin,
-                       octoprint.plugin.AssetPlugin,
-                       octoprint.plugin.SettingsPlugin):
+                       octoprint.plugin.AssetPlugin):
     def __init__(self):
         self.eta_string = "nada"
     def on_print_progress(self,storage, path, progress):
