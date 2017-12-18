@@ -5,7 +5,7 @@ import octoprint.plugin
 from octoprint.util import RepeatedTimer
 import time
 
-class HelloWorldPlugin(octoprint.plugin.ProgressPlugin,
+class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.TemplatePlugin,
                        octoprint.plugin.AssetPlugin,
                        octoprint.plugin.EventHandlerPlugin):
@@ -13,7 +13,7 @@ class HelloWorldPlugin(octoprint.plugin.ProgressPlugin,
     def __init__(self):
         self.eta_string = "-"
         self.eta_strftime = "%H:%M:%S"
-        self.timer = RepeatedTimer(15.0, HelloWorldPlugin.fromTimer, args=[self], run_first=True,)
+        self.timer = RepeatedTimer(15.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
 
     def fromTimer(self):
         self.eta_string = self.calculate_ETA()
@@ -49,7 +49,7 @@ class HelloWorldPlugin(octoprint.plugin.ProgressPlugin,
             else:
                 self.eta_string = self.calculate_ETA()
                 self.timer.cancel()
-                self.timer = RepeatedTimer(10.0, HelloWorldPlugin.fromTimer, args=[self], run_first=True,)
+                self.timer = RepeatedTimer(10.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
                 self.timer.start()
             self._plugin_manager.send_plugin_message(self._identifier, dict(eta_string=self.eta_string))
             
@@ -58,7 +58,7 @@ class HelloWorldPlugin(octoprint.plugin.ProgressPlugin,
             "js": ["js/navbartemp.js"]
         } 
 
-__plugin_name__ = "Hello World"
+__plugin_name__ = "Display ETA"
 __plugin_version__ = "1.0.0"
 __plugin_description__ = "A quick \"Hello World\" example plugin for OctoPrint"
-__plugin_implementation__ = HelloWorldPlugin()
+__plugin_implementation__ = DisplayETAPlugin()

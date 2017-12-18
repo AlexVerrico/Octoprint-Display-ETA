@@ -10,7 +10,7 @@ $(function() {
             }
         };
         self.onDataUpdaterPluginMessage = function(plugin, data) {
-            if (plugin != "helloworld") {
+            if (plugin != "octoprint-display-eta") {
                 return;
             }
             self.ETA(data.eta_string);
@@ -21,7 +21,7 @@ $(function() {
     OCTOPRINT_VIEWMODELS.push([
         ETAModel, 
         ["printerStateViewModel"],
-        ["#navbar_plugin_helloworld","#ETA_string"]
+        ["#navbar_plugin_octoprint-display-eta","#ETA_string"]
     ]);
 
 });
