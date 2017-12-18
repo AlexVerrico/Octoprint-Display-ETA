@@ -55,7 +55,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             
     def get_assets(self):
         return {
-            "js": ["js/navbartemp.js"]
+            "js": ["js/displayeta.js"]
         } 
 
 __plugin_name__ = "Display ETA"
