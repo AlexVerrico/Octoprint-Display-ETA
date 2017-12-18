@@ -55,9 +55,7 @@ class HelloWorldPlugin(octoprint.plugin.ProgressPlugin,
             
     def get_assets(self):
         return {
-            "js": ["js/navbartemp.js"],
-            "css": ["css/navbartemp.css"],
-            "less": ["less/navbartemp.less"]
+            "js": ["js/navbartemp.js"]
         } 
 
 __plugin_name__ = "Hello World"
