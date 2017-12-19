@@ -39,7 +39,7 @@ compatibility:
 
 ---
 
-Display estimated time of finish for current print (Estimated Time of Arrival). Day of finish is displayed only when current print not finish today.
+Display estimated time of finish for current print (Estimated Time of Arrival). Day of finish is displayed only when current print will not finish today.
 
 ![alt text](/assets/img/plugins/octoprint_eta/screenshot.png)
 
