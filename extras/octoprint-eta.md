@@ -8,7 +8,7 @@ author: Pablo Ventura
 license: AGPLv3
 
 # TODO
-date: today's date in format YYYY-MM-DD, e.g. 2015-04-21
+date: 2017-12-19
 
 homepage: https://github.com/pablogventura/Octoprint-ETA
 source: https://github.com/pablogventura/Octoprint-ETA
