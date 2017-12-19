@@ -58,6 +58,26 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             "js": ["js/displayeta.js"]
         } 
 
+
+def get_update_information(*args, **kwargs):
+    return dict(
+        updateplugindemo=dict(
+            displayName=self._plugin_name,
+            displayVersion=self._plugin_version,
+
+            type="github_release",
+            current=self._plugin_version,
+            user="pablogventura",
+            repo="Octoprint-ETA",
+
+            pip="https://github.com/pablogventura/Octoprint-ETA/archive/{target}.zip"
+        )
+    )
+
+__plugin_hooks__ = {
+"octoprint.plugin.softwareupdate.check_config": get_update_information
+}
+
 __plugin_name__ = "Display ETA"
 __plugin_identifier = "display-eta"
 __plugin_version__ = "0.1.0"
