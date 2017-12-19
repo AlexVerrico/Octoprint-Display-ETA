@@ -21,24 +21,19 @@ archive: https://github.com/pablogventura/Octoprint-ETA/archive/master.zip
 
 # TODO
 tags:
-- a list
-- of tags
-- that apply
-- to your plugin
-- (take a look at the existing plugins for what makes sense here)
+- time
+- eta
+- finish time
 
 # TODO
 screenshots:
-- url: url of a screenshot, /assets/img/...
+- url: /assets/img/plugins/octoprint_eta/screenshot.png
   alt: alt-text of a screenshot
-  caption: caption of a screenshot
-- url: url of another screenshot, /assets/img/...
-  alt: alt-text of another screenshot
-  caption: caption of another screenshot
-- ...
+  caption: ETA time for current print.
+
 
 # TODO
-featuredimage: url of a featured image for your plugin, /assets/img/...
+featuredimage: /assets/img/plugins/octoprint_eta/screenshot.png
 
 # TODO
 # You only need the following if your plugin requires specific OctoPrint versions or
@@ -58,7 +53,7 @@ compatibility:
   # OctoPrint versions being supported.
 
   octoprint:
-  - 1.2.0
+  - 1.3.6
 
   # List of compatible operating systems
   #
@@ -85,5 +80,12 @@ compatibility:
 
 ---
 
-**TODO**: Longer description of your plugin, configuration examples etc. This part will be visible on the page at
-http://plugins.octoprint.org/plugin/display-eta/
+Display estimated time of finish for current print (Estimated Time of Arrival). Day of finish is displayed only when current print not finish today.
+
+![alt text](/assets/img/plugins/octoprint_eta/screenshot.png)
+
+## Setup
+
+
+You must have the time zone configured on the host, otherwise you will see the time in UTC.
+In Debian the following commands are made "sudo dpkg-reconfigure tzdata", then follow the wizard.
