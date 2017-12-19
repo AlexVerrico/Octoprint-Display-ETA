@@ -1,6 +1,6 @@
 # OctoPrint-Display-ETA
 
-Display estimated time of finish for current print (Estimated Time of Arrival).
+Display estimated time of finish for current print (Estimated Time of Arrival). Day of finish is displayed only when current print not finish today.
 
 ![alt text](./extras/img/screenshot.png)
 
