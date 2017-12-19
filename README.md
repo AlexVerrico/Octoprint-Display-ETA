@@ -1,6 +1,7 @@
 # OctoPrint-Display-ETA
 
 Display estimated time of finish for current print (Estimated Time of Arrival).
+
 ![alt text](./extras/img/screenshot.png)
 
 ## Setup
