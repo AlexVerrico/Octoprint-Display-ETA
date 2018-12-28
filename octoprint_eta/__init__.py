@@ -40,6 +40,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         
     def on_print_progress(self,storage, path, progress):
         self.eta_string = self.calculate_ETA()
+        self._printer.commands("M117 ETA: {}".format(self.eta_string))
         self._plugin_manager.send_plugin_message(self._identifier, dict(eta_string=self.eta_string))
         
     def on_event(self,event, payload):
