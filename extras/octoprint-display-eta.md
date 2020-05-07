@@ -7,7 +7,7 @@ description: Show finish time (ETA time) for current print.
 author: AlexVerrico
 license: AGPLv3
 
-date: 2017-12-19
+date: 2020-5-7
 
 homepage: https://github.com/AlexVerrico/Octoprint-Display-ETA
 source: https://github.com/AlexVerrico/Octoprint-Display-ETA
