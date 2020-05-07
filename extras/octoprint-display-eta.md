@@ -19,11 +19,11 @@ tags:
 - finish time
 
 screenshots:
-- url: /assets/img/plugins/octoprint_eta/screenshot.png
+- url: /assets/img/plugins/octoprint_display_eta/screenshot.png
   alt: alt-text of a screenshot
   caption: ETA time for current print.
 
-featuredimage: /assets/img/plugins/octoprint_eta/screenshot.png
+featuredimage: /assets/img/plugins/octoprint_display_eta/screenshot.png
 
 
 compatibility:
@@ -41,7 +41,7 @@ compatibility:
 
 Display estimated time of finish for current print (Estimated Time of Arrival). Day of finish is displayed only when current print will not finish today.
 
-![alt text](/assets/img/plugins/octoprint_eta/screenshot.png)
+![alt text](/assets/img/plugins/octoprint_display_eta/screenshot.png)
 
 ## Setup
 
