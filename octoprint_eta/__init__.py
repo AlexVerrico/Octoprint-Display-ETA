@@ -81,6 +81,7 @@ __plugin_identifier = "display-eta"
 __plugin_version__ = "1.0.2"
 __plugin_description__ = "Show finish time (ETA time) for current print."
 __plugin_implementation__ = DisplayETAPlugin()
+__plugin_pythoncompat__ = ">=2.7,<4"
 
 __plugin_hooks__ = {
     "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
