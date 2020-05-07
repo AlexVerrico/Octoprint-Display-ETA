@@ -70,9 +70,9 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                 type="github_release",
                 current=self._plugin_version,
                 user="AlexVerrico",
-                repo="Octoprint-ETA",
+                repo="Octoprint-Display-ETA",
 
-                pip="https://github.com/AlexVerrico/Octoprint-ETA/archive/{target}.zip"
+                pip="https://github.com/AlexVerrico/Octoprint-Display-ETA/archive/{target}.zip"
                 )
             }
 

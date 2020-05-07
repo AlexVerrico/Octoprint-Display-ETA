@@ -9,9 +9,9 @@ license: AGPLv3
 
 date: 2017-12-19
 
-homepage: https://github.com/AlexVerrico/Octoprint-ETA
-source: https://github.com/AlexVerrico/Octoprint-ETA
-archive: https://github.com/AlexVerrico/Octoprint-ETA/archive/master.zip
+homepage: https://github.com/AlexVerrico/Octoprint-Display-ETA
+source: https://github.com/AlexVerrico/Octoprint-Display-ETA
+archive: https://github.com/AlexVerrico/Octoprint-Display-ETA/archive/master.zip
 
 tags:
 - time
