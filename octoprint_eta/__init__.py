@@ -78,7 +78,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
 __plugin_name__ = "Display Print ETA"
 __plugin_identifier = "display-print-eta"
-__plugin_version__ = "1.0.2"
+__plugin_version__ = "1.0.3"
 __plugin_description__ = "Show finish time (ETA) for current print."
 __plugin_implementation__ = DisplayETAPlugin()
 __plugin_pythoncompat__ = ">=2.7,<4"
