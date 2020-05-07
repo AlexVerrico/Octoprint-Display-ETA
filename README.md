@@ -1,4 +1,4 @@
-# OctoPrint-Display-ETA
+# OctoPrint-Display-Print-ETA
 
 Display estimated time of finish for current print (Estimated Time of Arrival). Day of finish is displayed only when current print not finish today.
 
@@ -9,7 +9,7 @@ Display estimated time of finish for current print (Estimated Time of Arrival). 
 Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
 or manually using this URL:
 
-    https://github.com/pablogventura/Octoprint-ETA/archive/master.zip
+    https://github.com/AlexVerrico/Octoprint-ETA/archive/master.zip
 
 You must have the time zone configured on the host, otherwise you will see the time in UTC.
 In Debian, use the following command to set time zone:

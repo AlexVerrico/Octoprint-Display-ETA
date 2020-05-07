@@ -69,17 +69,17 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
                 type="github_release",
                 current=self._plugin_version,
-                user="pablogventura",
+                user="AlexVerrico",
                 repo="Octoprint-ETA",
 
-                pip="https://github.com/pablogventura/Octoprint-ETA/archive/{target}.zip"
+                pip="https://github.com/AlexVerrico/Octoprint-ETA/archive/{target}.zip"
                 )
             }
 
-__plugin_name__ = "Display ETA"
-__plugin_identifier = "display-eta"
+__plugin_name__ = "Display Print ETA"
+__plugin_identifier = "display-print-eta"
 __plugin_version__ = "1.0.2"
-__plugin_description__ = "Show finish time (ETA time) for current print."
+__plugin_description__ = "Show finish time (ETA) for current print."
 __plugin_implementation__ = DisplayETAPlugin()
 __plugin_pythoncompat__ = ">=2.7,<4"
 

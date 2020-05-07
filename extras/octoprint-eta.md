@@ -1,17 +1,17 @@
 ---
 layout: plugin
 
-id: display-eta
-title: OctoPrint-Display-ETA
+id: display-print-eta
+title: OctoPrint-Display-Print-ETA
 description: Show finish time (ETA time) for current print.
-author: Pablo Ventura
+author: AlexVerrico
 license: AGPLv3
 
 date: 2017-12-19
 
-homepage: https://github.com/pablogventura/Octoprint-ETA
-source: https://github.com/pablogventura/Octoprint-ETA
-archive: https://github.com/pablogventura/Octoprint-ETA/archive/master.zip
+homepage: https://github.com/AlexVerrico/Octoprint-ETA
+source: https://github.com/AlexVerrico/Octoprint-ETA
+archive: https://github.com/AlexVerrico/Octoprint-ETA/archive/master.zip
 
 tags:
 - time

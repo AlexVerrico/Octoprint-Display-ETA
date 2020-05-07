@@ -4,14 +4,14 @@
 ### Do not forget to adjust the following variables to your own plugin.
 
 # The plugin's identifier, has to be unique
-plugin_identifier = "octoprint_eta"
+plugin_identifier = "octoprint_print_eta"
 
 # The plugin's python package, should be "octoprint_<plugin identifier>", has to be unique
-plugin_package = "octoprint_eta"
+plugin_package = "octoprint_print_eta"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
-plugin_name = "OctoPrint-Display-ETA"
+plugin_name = "OctoPrint-Display-Print-ETA"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
 plugin_version = "1.0.2"
@@ -21,13 +21,13 @@ plugin_version = "1.0.2"
 plugin_description = """Show finish time (ETA time) for current print."""
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
-plugin_author = "Pablo Ventura"
+plugin_author = "Alex Verrico"
 
 # The plugin's author's mail address.
-plugin_author_email = "pablogventura@gmail.com"
+plugin_author_email = "contact@alexverrico.com"
 
 # The plugin's homepage URL. Can be overwritten within OctoPrint's internal data via __plugin_url__ in the plugin module
-plugin_url = "https://github.com/pablogventura/Octoprint-ETA"
+plugin_url = "https://github.com/AlexVerrico/Octoprint-ETA"
 
 # The plugin's license. Can be overwritten within OctoPrint's internal data via __plugin_license__ in the plugin module
 plugin_license = "AGPLv3"
