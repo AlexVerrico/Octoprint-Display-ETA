@@ -57,13 +57,13 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             
     def get_assets(self):
         return {
-            "js": ["js/displayeta.js"]
+            "js": ["js/display_eta.js"]
         } 
 
 
     def get_update_information(self):
-        return {
-            "display-eta":dict(
+        return dict{
+            "display_eta"=dict(
                 displayName=self._plugin_name,
                 displayVersion=self._plugin_version,
 
@@ -76,8 +76,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                 )
             }
 
-__plugin_name__ = "Display Print ETA"
-__plugin_identifier = "display-print-eta"
+__plugin_name__ = "Octoprint-Display-ETA"
+__plugin_identifier = "display_eta"
 __plugin_version__ = "1.0.4"
 __plugin_description__ = "Show finish time (ETA) for current print."
 __plugin_implementation__ = DisplayETAPlugin()
