@@ -45,7 +45,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         
     def on_event(self,event, payload):
         if event.startswith('Print'):
-            if event not in {"PrintStarted","PrintResumed"}:
+            if event not in {"PrintStarted","PrintResumed","Printing"}:
                 self.eta_string="-"
                 self.timer.cancel()
             else:
