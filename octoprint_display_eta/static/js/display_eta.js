@@ -18,11 +18,11 @@ $(function() {
 
     }
 
-    OCTOPRINT_VIEWMODELS.push([
+    OCTOPRINT_VIEWMODELS.push({
         construct: ETAModel, 
         dependencies: ["printerStateViewModel"],
         elements: ["#navbar_plugin_octoprint_display_eta","#ETA_string"]
-    ]);
+    });
 
 });
 
