@@ -63,7 +63,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
     def get_update_information(self):
         return dict(
-            display_eta=dict(
+            #display_eta=dict(
+            Octoprint-Display-ETA=dict(
                 displayName=self._plugin_name,
                 displayVersion=self._plugin_version,
                 type="github_release",
