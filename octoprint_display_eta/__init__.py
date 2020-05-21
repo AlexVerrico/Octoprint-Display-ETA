@@ -58,8 +58,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         if event.startswith('Print'):
             _logger.debug('event starts with Print')
             if event not in {"PrintStarted","PrintResumed"}:
-                self.eta_string="-"
-                self.timer.cancel()
+                #self.eta_string="-"
+                #self.timer.cancel()
                 _logger.debug('event is not equal to PrintStarted or PrintResumed.')
             else:
                 _logger.debug('event is equal to PrintStarted or PrintResumed. Calling calculate_ETA')
