@@ -29,7 +29,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         _logger.debug('calculate_ETA called')
         currentData = self._printer.get_current_data()
         if not currentData["progress"]["printTimeLeft"]:
-            return "--"
+            return "-"
         current_time = datetime.datetime.today()
         finish_time = current_time + datetime.timedelta(0,currentData["progress"]["printTimeLeft"])
         strtime = format_time(finish_time)
@@ -58,7 +58,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         if event.startswith('Print'):
             _logger.debug('event starts with Print')
             if event not in {"PrintStarted","PrintResumed"}:
-                self.eta_string="---"
+                self.eta_string="-"
                 self.timer.cancel()
                 _logger.debug('event is not equal to PrintStarted or PrintResumed.')
             else:
