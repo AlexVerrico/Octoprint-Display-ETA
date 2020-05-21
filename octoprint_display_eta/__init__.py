@@ -53,6 +53,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         
     def on_event(self,event, payload):
         _logger.debug('on_event called')
+        _logger.debug('event is')
+        _logger.debug(event)
         if event.startswith('Print'):
             _logger.debug('event starts with Print')
             if event not in {"PrintStarted","PrintResumed"}:
