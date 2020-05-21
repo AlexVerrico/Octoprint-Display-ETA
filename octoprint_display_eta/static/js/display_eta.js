@@ -21,7 +21,7 @@ $(function() {
     OCTOPRINT_VIEWMODELS.push({
         construct: ETAModel, 
         dependencies: ["printerStateViewModel"],
-        elements: ["#navbar_plugin_octoprint_display_eta","#ETA_string"]
+        elements: ["#navbar_plugin_action_command_prompt","#ETA_string"]
     });
 
 });
