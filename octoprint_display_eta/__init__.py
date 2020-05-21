@@ -62,8 +62,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
 
     def get_update_information(self):
-        return dict{
-            "display_eta"=dict(
+        return dict(
+            display_eta=dict(
                 displayName=self._plugin_name,
                 displayVersion=self._plugin_version,
 
@@ -74,7 +74,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
                 pip="https://github.com/AlexVerrico/Octoprint-Display-ETA/archive/{target}.zip"
                 )
-            }
+        )
 
 __plugin_name__ = "Octoprint-Display-ETA"
 __plugin_identifier = "display_eta"
