@@ -15,7 +15,7 @@ $(function() {
             }
         };
         self.onDataUpdaterPluginMessage = function(plugin, data) {
-            if (plugin !== "octoprint_display_eta") {
+            if (plugin != "octoprint_display_eta") {
                 console.log("wrong plugin");
                 return;
             }
