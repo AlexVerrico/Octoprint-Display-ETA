@@ -5,16 +5,18 @@ $(function() {
         self.onBeforeBinding = function() {
             var element = $("#state").find(".accordion-inner .progress");
             if (element.length) {
-                console.log('Found required elements');
+                console.log("Found required elements");
                 var text = gettext("ETA");
+                console.log(text);
                 element.before(text + ": <strong id='ETA_string' data-bind=\"html: ETA\"></strong><br>");
             }
             else {
-                console.log('could not find required elements');
+                console.log("could not find required elements");
             }
         };
         self.onDataUpdaterPluginMessage = function(plugin, data) {
-            if (plugin != "octoprint_display_eta") {
+            if (plugin !== "octoprint_display_eta") {
+                console.log("wrong plugin");
                 return;
             }
             self.ETA(data.eta_string);
@@ -23,7 +25,7 @@ $(function() {
     }
 
     OCTOPRINT_VIEWMODELS.push({
-        construct: ETAModel, 
+        construct: ETAModel,
         dependencies: ["printerStateViewModel"],
         elements: ["#navbar_plugin_octoprint_display_eta","#ETA_string"]
     });
