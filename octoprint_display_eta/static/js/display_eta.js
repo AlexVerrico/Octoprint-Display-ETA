@@ -5,12 +5,12 @@ $(function() {
         self.onBeforeBinding = function() {
             var element = $("#state").find(".accordion-inner .progress");
             if (element.length) {
-                console.info('Found required elements');
+                console.log('Found required elements');
                 var text = gettext("ETA");
                 element.before(text + ": <strong id='ETA_string' data-bind=\"html: ETA\"></strong><br>");
             }
             else {
-                console.error('could not find required elements');
+                console.log('could not find required elements');
             }
         };
         self.onDataUpdaterPluginMessage = function(plugin, data) {
