@@ -13,10 +13,12 @@ _logger = logging.getLogger('octoprint.plugins.display_eta')
 class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.TemplatePlugin,
                        octoprint.plugin.AssetPlugin,
-                       octoprint.plugin.EventHandlerPlugin):
+                       octoprint.plugin.EventHandlerPlugin,
+                       octoprint.SettingsPlugin):
 
     def __init__(self):
         self.eta_string = "-"
+        12hrFormat=self._settings.get(["12hrFormat"])
         self.timer = RepeatedTimer(15.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
         _logger.debug('reached end of __init__')
 
