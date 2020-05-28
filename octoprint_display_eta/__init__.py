@@ -14,13 +14,15 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.TemplatePlugin,
                        octoprint.plugin.AssetPlugin,
                        octoprint.plugin.EventHandlerPlugin,
-                       octoprint.plugin.SettingsPlugin):
+                       octoprint.plugin.SettingsPlugin,
+                       octoprint.plugin.StartupPlugin):
 
-    def __init__(self):
-        self.eta_string = "-"
+    def on_after_stratup(self):
         format24hr=self._settings.get(["24hr"])
         _logger.debug('24hrFormat = ')
         _logger.debug(format24hr)
+    def __init__(self):
+        self.eta_string = "-"
         self.timer = RepeatedTimer(15.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
         _logger.debug('reached end of __init__')
 
