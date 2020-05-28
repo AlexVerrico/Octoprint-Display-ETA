@@ -17,7 +17,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.SettingsPlugin,
                        octoprint.plugin.StartupPlugin):
 
-    def on_after_stratup(self):
+    def on_after_startup(self):
         format24hr=self._settings.get(["24hr"])
         _logger.debug('24hrFormat ')
         _logger.debug(format24hr)
