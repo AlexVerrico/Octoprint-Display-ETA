@@ -18,7 +18,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.StartupPlugin):
 
     def on_after_startup(self):
-        format24hr=self._settings.get(["24hr"])
+        format24hr=self._settings.get(["time24hr"])
         _logger.debug('24hrFormat ')
         _logger.debug(format24hr)
     def __init__(self):
