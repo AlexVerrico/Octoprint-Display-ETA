@@ -14,7 +14,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.TemplatePlugin,
                        octoprint.plugin.AssetPlugin,
                        octoprint.plugin.EventHandlerPlugin,
-                       octoprint.SettingsPlugin):
+                       octoprint.plugin.SettingsPlugin):
 
     def __init__(self):
         self.eta_string = "-"
