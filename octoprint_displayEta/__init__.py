@@ -102,7 +102,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
     def get_update_information(self):
         return dict(
-            display_eta=dict(
+            displayEta=dict(
             #Octoprint-Display-ETA=dict(
                 displayName=self._plugin_name,
                 displayVersion=self._plugin_version,
@@ -115,7 +115,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         )
 
 __plugin_name__ = "Octoprint-Display-ETA"
-__plugin_identifier__ = "display_eta"
+__plugin_identifier__ = "displayEta"
 __plugin_version__ = "1.0.6"
 __plugin_description__ = "Show finish time (ETA) for current print."
 __plugin_implementation__ = DisplayETAPlugin()

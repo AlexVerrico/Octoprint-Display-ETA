@@ -43,7 +43,7 @@ $(function() {
             }*/
         };
         self.onDataUpdaterPluginMessage = function(plugin, data) {
-            if (plugin != "display_eta") {
+            if (plugin != "displayEta") {
                 // console.log("wrong plugin");
                 return;
             }
@@ -55,7 +55,7 @@ $(function() {
     OCTOPRINT_VIEWMODELS.push({
         construct: ETAModel,
         dependencies: ["printerStateViewModel", "settingsViewModel"],
-        elements: ["#navbar_plugin_octoprint_display_eta","#ETA_string","#settings_plugin_display_eta"]
+        elements: ["#navbar_plugin_octoprint_displayEta","#ETA_string","#settings_plugin_displayEta"]
     });
 
 });
