@@ -9,28 +9,28 @@ $(function() {
 			sendToPrinter : ko.observable()
 		};
 		
-		self.updateOptions = function(){
-	        var keys = Object.keys(self.options);
-	        var result = [];
-	        keys.forEach(function(key){
-	            if (self.options[key]()) result.push("."+key);
-	        });
+		// self.updateOptions = function(){
+	        // var keys = Object.keys(self.options);
+	        // var result = [];
+	        // keys.forEach(function(key){
+	            // if (self.options[key]()) result.push("."+key);
+	        // });
 	        // $('#gcode_upload').attr('accept', result.join(','));
-	    };
+	    // };
 		
         self.onBeforeBinding = function() {
             var element = $("#state").find(".accordion-inner .progress");
 			
-			var keys = Object.keys(self.options);
+			// var keys = Object.keys(self.options);
             // Initialize each element in model
-            keys.forEach(function(key) {
-                self.options[key](self.settings.settings.plugins.display_eta[key]());
-            });
+            // keys.forEach(function(key) {
+                // self.options[key](self.settings.settings.plugins.display_eta[key]());
+            // });
             // Bind subscriber to views.
-            keys.forEach(function(key) {
-                self.options[key].subscribe(self.updateOptions);
-            });
-		    self.updateOptions();
+            // keys.forEach(function(key) {
+                // self.options[key].subscribe(self.updateOptions);
+            // });
+		    // self.updateOptions();
 			
             if (element.length) {
                 // console.log("Found required elements");
