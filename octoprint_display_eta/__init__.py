@@ -19,8 +19,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
     def get_settings_defaults(self):
         return dict(
-            time24hr=False,
-            sendToPrinter=True
+            time24hr="False",
+            sendToPrinter="True"
         )
 
 ##    def get_template_configs(self):
