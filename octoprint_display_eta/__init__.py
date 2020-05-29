@@ -16,6 +16,13 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.EventHandlerPlugin,
                        octoprint.plugin.SettingsPlugin,
                        octoprint.plugin.StartupPlugin):
+
+    def get_settings_defaults(self):
+        return dict(
+            time24hr=False,
+            sendToPrinter=True
+        )
+
 ##    def get_template_configs(self):
 ##        return [
 ##            dict(type="settings")
@@ -31,12 +38,6 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         format_24hr = self._settings.get(["time24hr"])
         _logger.debug('24hrFormat ')
         _logger.debug(self._settings.get(["time24hr"]))
-
-    def get_settings_defaults(self):
-        return dict(
-            time24hr=False,
-            sendToPrinter=True
-        )
 
     def __init__(self):
         self.eta_string = "-"
