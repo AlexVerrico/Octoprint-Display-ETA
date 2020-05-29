@@ -25,6 +25,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         format_24hr = self._settings.get(["time24hr"])
         _logger.debug('24hrFormat ')
         _logger.debug(self._settings.get(["time24hr"])
+                      
     def __init__(self):
         self.eta_string = "-"
         self.timer = RepeatedTimer(15.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
