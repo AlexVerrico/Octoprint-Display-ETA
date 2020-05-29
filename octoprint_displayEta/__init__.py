@@ -8,7 +8,7 @@ import datetime
 import logging
 from babel.dates import format_date, format_datetime, format_time
 
-_logger = logging.getLogger('octoprint.plugins.displayEta')
+_logger = logging.getLogger('octoprint.plugins.display_eta')
 
 class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.TemplatePlugin,
@@ -96,7 +96,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             
     def get_assets(self):
         return {
-            "js": ["js/displayEta.js"]
+            "js": ["js/display_eta.js"]
         } 
 
 
