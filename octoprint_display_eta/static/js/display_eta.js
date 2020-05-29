@@ -6,7 +6,7 @@ $(function() {
 		
 		self.options = {
 			time24hr : ko.observable(),
-			sendToPrinter " ko.observable()
+			sendToPrinter : ko.observable()
 		};
 		
 		self.updateOptions = function(){
