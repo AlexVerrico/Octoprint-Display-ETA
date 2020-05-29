@@ -3,12 +3,12 @@
     <div class="control-group">
         <div class="controls">
             <label class="checkbox">
-                <input type="checkbox" data-bind="checked: format.nosemicolon" id="settings-nosemicolon"> Remove the semicolon from the time (Required for certain printer firmwares)
+                <input type="checkbox" data-bind="checked: options.time24hr" id="settings-time24hr"> Display time in 24Hr Format
             </label>
         </div>
         <div class="controls">
             <label class="checkbox">
-                <input type="checkbox" data-bind="checked: type.time24hr" id="settings-24hr"> Display time in 24hr format
+                <input type="checkbox" data-bind="checked: options.sendToPrinter" id="settings-sendToPrinter"> Display ETA on printer
             </label>
         </div>
     </div>
