@@ -16,17 +16,17 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.EventHandlerPlugin,
                        octoprint.plugin.SettingsPlugin,
                        octoprint.plugin.StartupPlugin):
-    def get_template_configs(self):
-        return [
-            dict(type="settings")
-        ]
-
-    def get_template_vars(self):
-        return dict(
-            time24hr=self._settings.get(["time24hr"]),
-            sendToPrinter=self._settings.get(["sendToPrinter"])
-        )
-
+##    def get_template_configs(self):
+##        return [
+##            dict(type="settings")
+##        ]
+##
+##    def get_template_vars(self):
+##        return dict(
+##            time24hr=self._settings.get(["time24hr"]),
+##            sendToPrinter=self._settings.get(["sendToPrinter"])
+##        )
+##
     def on_after_startup(self):
         format_24hr = self._settings.get(["time24hr"])
         _logger.debug('24hrFormat ')
