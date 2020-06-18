@@ -21,7 +21,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         time24hrValue = self._settings.get(["time24hr"])
         _logger.debug(time24hrValue)         
     def get_settings_defaults(self):
-        return dict(time24hr=False,displayOnPrinter=True)
+        return dict(time24hr=False,displayOnPrinter=True,removeColons=False)
 
     def get_template_configs(self):
         return [
@@ -60,6 +60,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         _logger.debug('on_print_progress called')
         self.eta_string = self.calculate_ETA()
         if (doM117 == True):
+            if (replaceColons == True):
+                self.eta_string = self.eta_string.replace(":", " ")
             self._printer.commands("M117 ETA is {}".format(self.eta_string))
         self._plugin_manager.send_plugin_message(self._identifier, dict(eta_string=self.eta_string))
         _logger.debug('reached end of on_print_progress')
@@ -78,20 +80,24 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                 _logger.debug('event is equal to PrintStarted or PrintResumed. Calling calculate_ETA')
                 global CustomTimeFormat
                 global doM117
-                theValue = self._settings.get(["time24hr"])
-                if (theValue == True):
+                value1 = self._settings.get(["time24hr"])
+                if (value1 == True):
                     _logger.debug('24HR = True')
                     CustomTimeFormat = "kk:mm:ss"
                 else:
                     _logger.debug('24HR = False')
                     CustomTimeFormat = "hh:mm:ss a"
-                theOtherValue = self._settings.get(["displayOnPrinter"])
-                if (theOtherValue == True):
+                value2 = self._settings.get(["displayOnPrinter"])
+                if (value2 == True):
                     _logger.debug('M117 = True')
                     doM117 = True
                 else:
                     doM117 = False
                     _logger.debug('M117 = False')
+                value3 = self.settings.get(["removeColons"])
+                if (value3 == True):
+                    replaceColons = True
+                    _logger.debug('replaceColons = True')
                 self.eta_string = self.calculate_ETA()
                 self.timer.cancel()
                 self.timer = RepeatedTimer(10.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
