@@ -44,7 +44,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 ##            CustomTimeFormat = "hh:mm:ss a"
             
     def get_settings_defaults(self):
-        return dict(time24hr=False)
+        return dict(time24hr=False,displayOnPrinter=True)
 
     def get_template_configs(self):
         return [
@@ -99,13 +99,21 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             else:
                 _logger.debug('event is equal to PrintStarted or PrintResumed. Calling calculate_ETA')
                 global CustomTimeFormat
+                global doM117
                 theValue = self._settings.get(["time24hr"])
                 if (theValue == True):
-                    _logger.debug('Value = True')
+                    _logger.debug('24HR = True')
                     CustomTimeFormat = "kk:mm:ss"
                 else:
-                    _logger.debug('Value = False')
+                    _logger.debug('24HR = False')
                     CustomTimeFormat = "hh:mm:ss a"
+                theOtherValue = self._settings.get(["displayOnPrinter"])
+                if (theOtherValue == True):
+                    _logger.debug('M117 = True')
+                    doM117 = True
+                else:
+                    doM117 = False
+                    _logger.debug('M117 = False')
                 self.eta_string = self.calculate_ETA()
                 self.timer.cancel()
                 self.timer = RepeatedTimer(10.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
