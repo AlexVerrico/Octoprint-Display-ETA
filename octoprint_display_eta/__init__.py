@@ -17,25 +17,20 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.SettingsPlugin,
                        octoprint.plugin.StartupPlugin):
 
+    def on_after_startup(self):
+        #format_24hr = self._settings.get(["time24hr"])
+        #_logger.debug('24hrFormat ')
+        #_logger.debug(self._settings.get(["time24hr"]))
+        _logger.info("Hello World! (more: %s)" % self._settings.get(["time24hr"]))
+
     def get_settings_defaults(self):
         return dict(time24hr="False")
 
-##    def get_template_configs(self):
-##        return [
-##            dict(type="settings")
-##        ]
-##
-##    def get_template_vars(self):
-##        return dict(
-##            time24hr=self._settings.get(["time24hr"]),
-##            sendToPrinter=self._settings.get(["sendToPrinter"])
-##        )
-##
-    def on_after_startup(self):
-        format_24hr = self._settings.get(["time24hr"])
-        _logger.debug('24hrFormat ')
-        _logger.debug(self._settings.get(["time24hr"]))
-        _logger.info("Hello World! (more: %s)" % self._settings.get(["time24hr"]))
+    def get_template_configs(self):
+        return [
+            dict(type="navbar", custom_bindings=False),
+            dict(type="settings", custom_bindings=False)
+        ]
 
     def __init__(self):
         self.eta_string = "-"
