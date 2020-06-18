@@ -5,6 +5,7 @@ $(function() {
 		self.settings = parameters[0];
 		time24hr : ko.observable();
 		displayOnPrinter : ko.observable();
+		removeColons : ko.observable();
         self.onBeforeBinding = function() {
             var element = $("#state").find(".accordion-inner .progress");
             if (element.length) {
