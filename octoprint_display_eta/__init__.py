@@ -20,9 +20,9 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.StartupPlugin):
 
     def on_after_startup(self):
-        global CustomTimeFormat
-##        time24hrValue = self._settings.get(["time24hr"])
-##        _logger.debug(time24hrValue)
+##        global CustomTimeFormat
+        time24hrValue = self._settings.get(["time24hr"])
+        _logger.debug(time24hrValue)
 ##        time24hrValue = "True"
 ##        if (time24hrValue == "True"):
 ##            global CustomTimeFormat
@@ -35,13 +35,13 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         #_logger.debug(self._settings.get(["time24hr"]))
 ##        if (self._settings.get(["time24hr"]) == "true"):
 ##            _logger.info("Time will be displayed in 24hr format")
-        theValue = self._settings.get(["time24hr"])
-        if (theValue == True):
-            _logger.debug('Value = True')
-            CustomTimeFormat = "kk:mm:ss"
-        elif (theValue == False):
-            _logger.debug('Value = False')
-            CustomTimeFormat = "hh:mm:ss a"
+##        theValue = self._settings.get(["time24hr"])
+##        if (theValue == True):
+##            _logger.debug('Value = True')
+##            CustomTimeFormat = "kk:mm:ss"
+##        else (theValue == False):
+##            _logger.debug('Value = False')
+##            CustomTimeFormat = "hh:mm:ss a"
             
     def get_settings_defaults(self):
         return dict(time24hr=False)
@@ -98,12 +98,14 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                 _logger.debug('event is not equal to PrintStarted or PrintResumed.')
             else:
                 _logger.debug('event is equal to PrintStarted or PrintResumed. Calling calculate_ETA')
-##                if (self._settings.get(["time24hr"]) == "True"):
-##                    global CustomTimeFormat
-##                    timeFormat = "kk:mm:ss"
-##                else:
-##                    global CustomTimeFormat
-##                    timeFormat = "hh:mm:ss a"
+                global CustomTimeFormat
+                theValue = self._settings.get(["time24hr"])
+                if (theValue == True):
+                    _logger.debug('Value = True')
+                    CustomTimeFormat = "kk:mm:ss"
+                else:
+                    _logger.debug('Value = False')
+                    CustomTimeFormat = "hh:mm:ss a"
                 self.eta_string = self.calculate_ETA()
                 self.timer.cancel()
                 self.timer = RepeatedTimer(10.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
