@@ -19,9 +19,9 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
     def on_after_startup(self):
         if (self._settings.get(["time24hr"]) == True):
-            format_24hr = "True"
+            timeFormat = "kk:mm:ss"
         else:
-            format_24hr = "False"
+            timeFormat = "hh:mm:ss a"
         _logger.debug('24hrFormat = ' + format_24hr)
         #_logger.debug(self._settings.get(["time24hr"]))
         #_logger.info("Hello World! (more: %s)" % self._settings.get(["time24hr"]))
@@ -52,7 +52,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             return "-"
         current_time = datetime.datetime.today()
         finish_time = current_time + datetime.timedelta(0,currentData["progress"]["printTimeLeft"])
-        strtime = format_time(finish_time,"hh:mm:ss a")
+        strtime = format_time(finish_time,timeFormat)
         _logger.debug('strtime = ' + strtime)
         strdate = ""
         if finish_time.day > current_time.day:
