@@ -20,20 +20,38 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.StartupPlugin):
 
     def on_after_startup(self):
-        time24hrValue = self._settings.get(["time24hr"])
-        _logger.debug(time24hrValue)
-        time24hrValue = "True"
-        if (time24hrValue == "True"):
-            global CustomTimeFormat
-            timeFormat = "kk:mm:ss"
-            _logger.info('TRUE')
-        else:
-            global CustomTimeFormat
-            timeFormat = "hh:mm:ss a"
-        _logger.debug(self._settings.get(["time24hr"]))
+##        time24hrValue = self._settings.get(["time24hr"])
+##        _logger.debug(time24hrValue)
+##        time24hrValue = "True"
+##        if (time24hrValue == "True"):
+##            global CustomTimeFormat
+##            timeFormat = "kk:mm:ss"
+##            _logger.info('TRUE')
+##        else:
+##            global CustomTimeFormat
+##            timeFormat = "hh:mm:ss a"
+##        _logger.debug(self._settings.get(["time24hr"]))
         #_logger.debug(self._settings.get(["time24hr"]))
 ##        if (self._settings.get(["time24hr"]) == "true"):
 ##            _logger.info("Time will be displayed in 24hr format")
+        theValue = self._settings.get(["time24hr"])
+        if (theValue == "True"):
+            _logger.debug('Value = \"True\"')
+        if (theValue == True):
+            _logger.debug('Value = True')
+        if (theValue == "False"):
+            _logger.debug('Value = \"False\"')
+        if (theValue == False):
+            _logger.debug('Value = False')
+        if (theValue == "true"):
+            _logger.debug('Value = \"true\"')
+        if (theValue == true):
+            _logger.debug('Value = true')
+        if (theValue == "false"):
+            _logger.debug('Value = \"false\"')
+        if (theValue == false):
+            _logger.debug('Value = false')
+        
             
     def get_settings_defaults(self):
         return dict(time24hr=False)
