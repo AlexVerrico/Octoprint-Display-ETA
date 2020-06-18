@@ -28,7 +28,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             timeFormat = "hh:mm:ss a"
 ##        _logger.debug('24hrFormat = ' + format_24hr)
         #_logger.debug(self._settings.get(["time24hr"]))
-        _logger.info("Display time in 24hr format = " % self._settings.get(["time24hr"]))
+        if (self._settings.get(["time24hr"]) == True):
+            _logger.info("Time will be displayed in 24hr format")
 
     def get_settings_defaults(self):
         return dict(time24hr=False)
@@ -38,7 +39,13 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             dict(type="navbar", custom_bindings=False),
             dict(type="settings", custom_bindings=False)
         ]
-
+    def on_settings_save(self):
+        if (self._settings.get(["time24hr"]) == True):
+            global CustomTimeFormat
+            timeFormat = "kk:mm:ss"
+        else:
+            global CustomTimeFormat
+            timeFormat = "hh:mm:ss a"
     def __init__(self):
         self.eta_string = "-"
         self.timer = RepeatedTimer(15.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
