@@ -21,6 +21,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
     def on_after_startup(self):
         time24hrValue = self._settings.get(["time24hr"])
+        _logger.debug(time24hrValue)
         if (time24hrValue == "True"):
             global CustomTimeFormat
             timeFormat = "kk:mm:ss"
