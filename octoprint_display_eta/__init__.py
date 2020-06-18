@@ -95,10 +95,12 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                 else:
                     doM117 = False
                     _logger.debug('M117 = False')
-                value3 = self.settings.get(["removeColons"])
+                value3 = self._settings.get(["removeColons"])
                 if (value3 == True):
                     replaceColons = True
                     _logger.debug('replaceColons = True')
+                else:
+                    replaceColons = False
                 self.eta_string = self.calculate_ETA()
                 self.timer.cancel()
                 self.timer = RepeatedTimer(10.0, DisplayETAPlugin.fromTimer, args=[self], run_first=True,)
