@@ -52,7 +52,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             return "-"
         current_time = datetime.datetime.today()
         finish_time = current_time + datetime.timedelta(0,currentData["progress"]["printTimeLeft"])
-        strtime = format_time(finish_time,"kk:mm:ss")
+        strtime = format_time(finish_time,"hh:mm:ss a")
         _logger.debug('strtime = ' + strtime)
         strdate = ""
         if finish_time.day > current_time.day:
