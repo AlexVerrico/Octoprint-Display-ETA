@@ -4,10 +4,8 @@ $(function() {
         self.ETA = ko.observable("-");
 		self.settings = parameters[0];
 		
-		//self.options = {
-		time24hr : ko.observable(),
-		//	sendToPrinter : ko.observable()
-		//};
+		time24hr : ko.observable();
+		displayOnPrinter : ko.observable();
 		
 		// self.updateOptions = function(){
 	        // var keys = Object.keys(self.options);
