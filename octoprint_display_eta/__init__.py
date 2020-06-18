@@ -80,6 +80,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                 _logger.debug('event is equal to PrintStarted or PrintResumed. Calling calculate_ETA')
                 global CustomTimeFormat
                 global doM117
+                global replaceColons
                 value1 = self._settings.get(["time24hr"])
                 if (value1 == True):
                     _logger.debug('24HR = True')
