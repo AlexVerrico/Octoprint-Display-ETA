@@ -1,6 +1,8 @@
 # OctoPrint-Display-Print-ETA
 
 Display the finish time of the current print as estimated by Octoprint. The day of finish is displayed only when the current print will not finish today.
+You can configure if you want to display the ETA on the printer, as well as if you want to use 12HR or 24HR time.
+If this plugin causes your printer to report errors, try enabling the option "remove all colons"
 
 ![alt text](./extras/img/screenshot.png)
 
