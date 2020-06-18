@@ -10,7 +10,7 @@ from babel.dates import format_date, format_datetime, format_time
 
 _logger = logging.getLogger('octoprint.plugins.display_eta')
 
-timeFormat = "hh:mm:ss a"
+CustomTimeFormat = "hh:mm:ss a"
 
 class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.TemplatePlugin,
@@ -21,10 +21,10 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
     def on_after_startup(self):
         if (self._settings.get(["time24hr"]) == True):
-            global timeFormat
+            global CustomTimeFormat
             timeFormat = "kk:mm:ss"
         else:
-            global timeFormat
+            global CustomTimeFormat
             timeFormat = "hh:mm:ss a"
 ##        _logger.debug('24hrFormat = ' + format_24hr)
         #_logger.debug(self._settings.get(["time24hr"]))
@@ -56,7 +56,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             return "-"
         current_time = datetime.datetime.today()
         finish_time = current_time + datetime.timedelta(0,currentData["progress"]["printTimeLeft"])
-        strtime = format_time(finish_time,timeFormat)
+        strtime = format_time(finish_time,CustomTimeFormat)
         _logger.debug('strtime = ' + strtime)
         strdate = ""
         if finish_time.day > current_time.day:
