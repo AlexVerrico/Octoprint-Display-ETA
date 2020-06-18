@@ -25,6 +25,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
         _logger.debug('24hrFormat = ' + format_24hr)
         #_logger.debug(self._settings.get(["time24hr"]))
         #_logger.info("Hello World! (more: %s)" % self._settings.get(["time24hr"]))
+        return timeFormat
 
     def get_settings_defaults(self):
         return dict(time24hr=False)
