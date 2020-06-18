@@ -45,12 +45,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
             _logger.debug('Value = False')
         if (theValue == "true"):
             _logger.debug('Value = \"true\"')
-        if (theValue == true):
-            _logger.debug('Value = true')
         if (theValue == "false"):
             _logger.debug('Value = \"false\"')
-        if (theValue == false):
-            _logger.debug('Value = false')
         
             
     def get_settings_defaults(self):
