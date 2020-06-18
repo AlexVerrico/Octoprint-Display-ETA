@@ -10,8 +10,6 @@ from babel.dates import format_date, format_datetime, format_time
 
 _logger = logging.getLogger('octoprint.plugins.display_eta')
 
-##CustomTimeFormat = "hh:mm:ss a"
-
 class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.TemplatePlugin,
                        octoprint.plugin.AssetPlugin,
@@ -20,29 +18,8 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.StartupPlugin):
 
     def on_after_startup(self):
-##        global CustomTimeFormat
         time24hrValue = self._settings.get(["time24hr"])
-        _logger.debug(time24hrValue)
-##        time24hrValue = "True"
-##        if (time24hrValue == "True"):
-##            global CustomTimeFormat
-##            timeFormat = "kk:mm:ss"
-##            _logger.info('TRUE')
-##        else:
-##            global CustomTimeFormat
-##            timeFormat = "hh:mm:ss a"
-##        _logger.debug(self._settings.get(["time24hr"]))
-        #_logger.debug(self._settings.get(["time24hr"]))
-##        if (self._settings.get(["time24hr"]) == "true"):
-##            _logger.info("Time will be displayed in 24hr format")
-##        theValue = self._settings.get(["time24hr"])
-##        if (theValue == True):
-##            _logger.debug('Value = True')
-##            CustomTimeFormat = "kk:mm:ss"
-##        else (theValue == False):
-##            _logger.debug('Value = False')
-##            CustomTimeFormat = "hh:mm:ss a"
-            
+        _logger.debug(time24hrValue)         
     def get_settings_defaults(self):
         return dict(time24hr=False,displayOnPrinter=True)
 
@@ -131,7 +108,6 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
     def get_update_information(self):
         return dict(
             display_eta=dict(
-            #Octoprint-Display-ETA=dict(
                 displayName=self._plugin_name,
                 displayVersion=self._plugin_version,
                 type="github_release",
