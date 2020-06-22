@@ -18,8 +18,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                        octoprint.plugin.StartupPlugin):
 
     def on_after_startup(self):
-        time24hrValue = self._settings.get(["time24hr"])
-        _logger.debug(time24hrValue)         
+        _logger.debug('Display-ETA startup finished')
     def get_settings_defaults(self):
         return dict(time24hr=False,displayOnPrinter=True,removeColons=False)
 
@@ -84,10 +83,11 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
                 value1 = self._settings.get(["time24hr"])
                 if (value1 == True):
                     _logger.debug('24HR = True')
-                    CustomTimeFormat = "kk:mm:ss"
+                    CustomTimeFormat = "HH:mm:ss"
                 else:
                     _logger.debug('24HR = False')
                     CustomTimeFormat = "hh:mm:ss a"
+                    ## See http://babel.pocoo.org/en/latest/dates.html#time-fields for details on the time format
                 value2 = self._settings.get(["displayOnPrinter"])
                 if (value2 == True):
                     _logger.debug('M117 = True')
@@ -129,7 +129,7 @@ class DisplayETAPlugin(octoprint.plugin.ProgressPlugin,
 
 __plugin_name__ = "Octoprint-Display-ETA"
 __plugin_identifier__ = "display_eta"
-__plugin_version__ = "1.1.0"
+__plugin_version__ = "1.1.1"
 __plugin_description__ = "Show finish time (ETA) for current print."
 __plugin_implementation__ = DisplayETAPlugin()
 __plugin_pythoncompat__ = ">=2.7,<4"
