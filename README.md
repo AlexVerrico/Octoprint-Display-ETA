@@ -13,6 +13,7 @@ or manually using this URL:
 
     https://github.com/AlexVerrico/Octoprint-Display-ETA/archive/master.zip
 
+Some users have reported that the ETA is extremely innacurate, please try installing [Print Time Genius](https://plugins.octoprint.org/plugins/PrintTimeGenius/) before opening a new issue.  
 You must have the time zone configured on the host, otherwise you will see the time in UTC.
 In Debian, use the following command to set time zone:
 ```bash
