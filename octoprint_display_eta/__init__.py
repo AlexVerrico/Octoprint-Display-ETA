@@ -18,14 +18,16 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
                        octoprint.plugin.SimpleApiPlugin,
                        octoprint.plugin.RestartNeedingPlugin,):
 
+    def __init__(self):
+        # This allows us to store and display our logs with the rest of the OctoPrint logs
+        self.logger = logging.getLogger('octoprint.plugins.display_eta')
+        return
+
     #######################
     # StartupPlugin Mixin #
     #######################
     # Function to run after Octoprint starts, used to initialise variables
     def on_after_startup(self):
-        # This allows us to store and display our logs with the rest of the OctoPrint logs
-        self.logger = logging.getLogger('octoprint.plugins.display_eta')
-
         # Create a string to store the latest ETA
         self.eta_string = "-"
 
