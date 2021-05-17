@@ -285,7 +285,6 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
 
 __plugin_name__ = "Octoprint Display ETA"
 __plugin_identifier__ = "display_eta"
-__plugin_version__ = "2.0.1"
 __plugin_description__ = "Display finish time (ETA) for current print."
 __plugin_implementation__ = DisplayETAPlugin()
 __plugin_pythoncompat__ = ">=2.7,<4"
