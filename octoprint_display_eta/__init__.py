@@ -148,7 +148,6 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             self.timer.cancel()
             # Set the current ETA to "-"
             self.eta_string = "-"
-            self.update_eta()
             return
         else:
             return
