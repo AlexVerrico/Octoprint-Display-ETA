@@ -123,7 +123,6 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
     ############################
     # Fucntion to be called by Octoprint when an event occurs
     def on_event(self, event, payload):
-        self.logger.debug('on_event called')
         self.logger.debug('event is {}'.format(event))
         # Check if the event is PrintStarted or PrintResumed
         if event == octoprint.events.Events.PRINT_STARTED or event == octoprint.events.Events.PRINT_RESUMED:
@@ -139,8 +138,6 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             # Start the timer
             self.timer.start()
             self.logger.debug('reached end of on_event')
-            return
-
         # If the even starts with Print but isn't PrintStarted or PrintResumed
         elif event == octoprint.events.Events.PRINT_PAUSED or event == octoprint.events.Events.PRINT_CANCELLED or event == octoprint.events.Events.PRINT_FAILED or event == octoprint.events.Events.PRINT_DONE:
             self.logger.debug('not printing event received')
@@ -148,10 +145,10 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             self.timer.cancel()
             # Set the current ETA to "-"
             self.eta_string = "-"
-            return
-        else:
-            return
+            # Push the ETA to the Web UI and printer LCD(If enabled)
+            self.update_eta()
 
+        
     #########################
     # SimpleApiPlugin Mixin #
     #########################
