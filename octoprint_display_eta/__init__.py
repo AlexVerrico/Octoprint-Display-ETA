@@ -143,11 +143,12 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
 
         # If the even starts with Print but isn't PrintStarted or PrintResumed
         elif event == octoprint.events.Events.PRINT_PAUSED or event == octoprint.events.Events.PRINT_CANCELLED or event == octoprint.events.Events.PRINT_FAILED or event == octoprint.events.Events.PRINT_DONE:
-            # Set the current ETA to "-"
-            self.eta_string = "-"
+            self.logger.debug('not printing event received')
             # Stop the timer
             self.timer.cancel()
-            self.logger.debug('not printing event received')
+            # Set the current ETA to "-"
+            self.eta_string = "-"
+            self.update_eta()
             return
         else:
             return
