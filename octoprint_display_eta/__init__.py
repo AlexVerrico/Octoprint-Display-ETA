@@ -126,7 +126,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         self.logger.debug('on_event called')
         self.logger.debug('event is {}'.format(event))
         # Check if the event is PrintStarted or PrintResumed
-        if event in ('PrintStarted', 'PrintResumed'):
+        if event == octoprint.events.Events.PRINT_STARTED or event == octoprint.events.Events.PRINT_RESUMED:
             self.logger.debug('event is PrintStarted or PrintResumed. Calling calculate_eta')
             # Calculate the ETA and push it to the Web UI and printer LCD (if enabled)
             self.calculate_eta()
@@ -142,12 +142,12 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             return
 
         # If the even starts with Print but isn't PrintStarted or PrintResumed
-        elif event.startswith("Print"):
+        elif event == octoprint.events.Events.PRINT_PAUSED or event == octoprint.events.Events.PRINT_CANCELLED or event == octoprint.events.Events.PRINT_FAILED or event == octoprint.events.Events.PRINT_DONE:
             # Set the current ETA to "-"
             self.eta_string = "-"
             # Stop the timer
             self.timer.cancel()
-            self.logger.debug('event starts with Print but is not PrintStarted or PrintResumed')
+            self.logger.debug('not printing event received')
             return
         else:
             return
