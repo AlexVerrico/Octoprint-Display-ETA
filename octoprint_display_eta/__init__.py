@@ -145,7 +145,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             self.timer.cancel()
             # Set the current ETA to "-"
             self.eta_string = "-"
-            # Push the ETA to the Web UI and printer LCD(If enabled)
+            # Push the ETA to the Web UI and printer LCD
             self.update_eta()
 
         
