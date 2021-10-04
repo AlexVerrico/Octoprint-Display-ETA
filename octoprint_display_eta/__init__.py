@@ -127,6 +127,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         # Check if the event is PrintStarted or PrintResumed
         if event == octoprint.events.Events.PRINT_STARTED or event == octoprint.events.Events.PRINT_RESUMED or event == octoprint.events.Events.FILE_SELECTED:
             self.logger.debug('event is PrintStarted or PrintResumed. Calling calculate_eta')
+            self.logger.debug(payload)
             # Calculate the ETA and push it to the Web UI and printer LCD (if enabled)
             self.calculate_eta()
             # Stop the timer
@@ -221,7 +222,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         job_data = self._printer.get_current_job()
         # Check if the time left for the current print is included in the data returned
 
-        self.logger.debug(job_data)
+        self.logger.debug(current_data)
 
         time_left = job_data["estimatedPrintTime"]
 
