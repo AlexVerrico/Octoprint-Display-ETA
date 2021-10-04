@@ -223,10 +223,14 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
 
         self.logger.debug(job_data)
 
-        time_left = job_data["job"]["estimatedPrintTime"]
+        time_left = job_data["estimatedPrintTime"]
 
         if current_data["progress"]["printTimeLeft"]:
             time_left = current_data["progress"]["printTimeLeft"]
+
+        if not time_left:
+            self.logger.debug('failed to find valid time left')
+            return "-"
 
         # Get the current time and date
         current_time = datetime.datetime.today()
