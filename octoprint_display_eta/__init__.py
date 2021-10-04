@@ -49,7 +49,6 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         self.update_interval = self._settings.get(['updateInterval'])
         # Create a RepeatedTimer object to run calculate_eta every update_interval seconds, eg every 10 seconds
         self.timer = RepeatedTimer(self.update_interval, DisplayETAPlugin.calculate_eta, args=[self], run_first=True, )
-        self.timer.start()
 
     ########################
     # SettingsPlugin Mixin #
@@ -125,9 +124,8 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
     # Fucntion to be called by Octoprint when an event occurs
     def on_event(self, event, payload):
         self.logger.debug('event is {}'.format(event))
-        return
         # Check if the event is PrintStarted or PrintResumed
-        if event == octoprint.events.Events.PRINT_STARTED or event == octoprint.events.Events.PRINT_RESUMED:
+        if event == octoprint.events.Events.PRINT_STARTED or event == octoprint.events.Events.PRINT_RESUMED or event == octoprint.events.Events.FILE_SELECTED:
             self.logger.debug('event is PrintStarted or PrintResumed. Calling calculate_eta')
             # Calculate the ETA and push it to the Web UI and printer LCD (if enabled)
             self.calculate_eta()
