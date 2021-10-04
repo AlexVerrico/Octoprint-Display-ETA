@@ -148,7 +148,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             # Push the ETA to the Web UI and printer LCD
             self.update_eta()
 
-        
+
     #########################
     # SimpleApiPlugin Mixin #
     #########################
@@ -219,13 +219,16 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         # Get the current printer data, which should include the time left for the current print
         current_data = self._printer.get_current_data()
         # Check if the time left for the current print is included in the data returned
-        if not current_data["progress"]["printTimeLeft"]:
-            self.logger.debug("calculate_eta() returning blank string")
-            return "-"
+
+        time_left = current_data["job"]["estimatedPrintTime"]
+
+        if current_data["progress"]["printTimeLeft"]:
+            time_left = current_data["progress"]["printTimeLeft"]
+
         # Get the current time and date
         current_time = datetime.datetime.today()
         # Add the time left for the current print to the current time and date
-        finish_time = current_time + datetime.timedelta(0, current_data["progress"]["printTimeLeft"])
+        finish_time = current_time + datetime.timedelta(0, time_left)
         # Format the time according to the users choice (either 12hr or 24hr time)
         strtime = format_time(finish_time, self.CustomTimeFormat)
         self.logger.debug('strtime = ' + strtime)
