@@ -127,7 +127,6 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         # Check if the event is PrintStarted or PrintResumed
         if event == octoprint.events.Events.PRINT_STARTED or event == octoprint.events.Events.PRINT_RESUMED or event == octoprint.events.Events.FILE_SELECTED:
             self.logger.debug('event is PrintStarted or PrintResumed. Calling calculate_eta')
-            self.logger.debug(payload)
             # Calculate the ETA and push it to the Web UI and printer LCD (if enabled)
             self.calculate_eta()
             # Stop the timer
@@ -135,7 +134,10 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             # Get the updateInterval from the settings
             self.update_interval = self._settings.get(['updateInterval'])
             # Redefine the timer with the new updateInterval
-            self.timer = RepeatedTimer(self.update_interval, DisplayETAPlugin.calculate_eta, args=[self], run_first=True,)
+            if(event == octoprint.events.Events.FILE_SELECTED):
+                self.timer = RepeatedTimer(1, DisplayETAPlugin.calculate_eta, args=[self], run_first=True,)
+            else:
+                self.timer = RepeatedTimer(self.update_interval, DisplayETAPlugin.calculate_eta, args=[self], run_first=True,)
             # Start the timer
             self.timer.start()
             self.logger.debug('reached end of on_event')
