@@ -218,9 +218,12 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         self.logger.debug('calculate_eta called')
         # Get the current printer data, which should include the time left for the current print
         current_data = self._printer.get_current_data()
+        job_data = self._printer.get_current_job()
         # Check if the time left for the current print is included in the data returned
 
-        time_left = current_data["job"]["estimatedPrintTime"]
+        self.logger.debug(job_data)
+
+        time_left = job_data["job"]["estimatedPrintTime"]
 
         if current_data["progress"]["printTimeLeft"]:
             time_left = current_data["progress"]["printTimeLeft"]
