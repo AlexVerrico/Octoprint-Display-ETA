@@ -151,7 +151,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             # Push the ETA to the Web UI and printer LCD
             self.update_eta()
 
-
+        
     #########################
     # SimpleApiPlugin Mixin #
     #########################
