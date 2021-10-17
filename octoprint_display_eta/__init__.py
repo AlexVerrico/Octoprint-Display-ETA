@@ -125,7 +125,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
     def on_event(self, event, payload):
         self.logger.debug('event is {}'.format(event))
         # Check if the event is PrintStarted or PrintResumed
-        if event == octoprint.events.Events.PRINT_STARTED or event == octoprint.events.Events.PRINT_RESUMED:
+        if event == octoprint.events.Events.PRINT_STARTED or event == octoprint.events.Events.PRINT_RESUMED or event == octoprint.events.Events.FILE_SELECTED:
             self.logger.debug('event is PrintStarted or PrintResumed. Calling calculate_eta')
             # Calculate the ETA and push it to the Web UI and printer LCD (if enabled)
             self.calculate_eta()
@@ -134,7 +134,10 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             # Get the updateInterval from the settings
             self.update_interval = self._settings.get(['updateInterval'])
             # Redefine the timer with the new updateInterval
-            self.timer = RepeatedTimer(self.update_interval, DisplayETAPlugin.calculate_eta, args=[self], run_first=True,)
+            if(event == octoprint.events.Events.FILE_SELECTED):
+                self.timer = RepeatedTimer(1, DisplayETAPlugin.calculate_eta, args=[self], run_first=True,)
+            else:
+                self.timer = RepeatedTimer(self.update_interval, DisplayETAPlugin.calculate_eta, args=[self], run_first=True,)
             # Start the timer
             self.timer.start()
             self.logger.debug('reached end of on_event')
@@ -218,14 +221,24 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         self.logger.debug('calculate_eta called')
         # Get the current printer data, which should include the time left for the current print
         current_data = self._printer.get_current_data()
+        job_data = self._printer.get_current_job()
         # Check if the time left for the current print is included in the data returned
-        if not current_data["progress"]["printTimeLeft"]:
-            self.logger.debug("calculate_eta() returning blank string")
+
+        self.logger.debug(current_data)
+
+        time_left = job_data["estimatedPrintTime"]
+
+        if current_data["progress"]["printTimeLeft"]:
+            time_left = current_data["progress"]["printTimeLeft"]
+
+        if not time_left:
+            self.logger.debug('failed to find valid time left')
             return "-"
+
         # Get the current time and date
         current_time = datetime.datetime.today()
         # Add the time left for the current print to the current time and date
-        finish_time = current_time + datetime.timedelta(0, current_data["progress"]["printTimeLeft"])
+        finish_time = current_time + datetime.timedelta(0, time_left)
         # Format the time according to the users choice (either 12hr or 24hr time)
         strtime = format_time(finish_time, self.CustomTimeFormat)
         self.logger.debug('strtime = ' + strtime)
