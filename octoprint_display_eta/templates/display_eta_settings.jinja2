@@ -1,9 +1,21 @@
-<form class="form-horizontal">
+<h3>{{ _('OctoPrint Display ETA') }} <small>{{ _('Version') }}: <span data-bind="text: settings.plugins.display_eta.installed_version"/></small></h3>
+    <legend>Time Format</legend>
     <div class="control-group">
         <div class="controls">
             <label class="checkbox">
-            <input type="checkbox" data-bind="checked: settings.plugins.display_eta.time24hr">{{ _('Use 24HR time instead of 12HR') }}
+            <input type="checkbox" data-bind="enable: settings.plugins.display_eta.customTimeStringEnable == false || settings.plugins.display_eta.customTimeString == "", checked: settings.plugins.display_eta.time24hr">{{ _('Use 24HR time instead of 12HR') }}
             </label>
+            <label class="checkbox">
+            <input type="checkbox" data-bind="enable: settings.plugins.display_eta.customTimeStringEnable == false || settings.plugins.display_eta.customTimeString == "", checked: settings.plugins.display_eta.customTimeStringEnable">{{ _('Use a custom Babel time string') }}
+            </label>
+            <label class="checkbox">
+            <input type="text" data-bind="enable: settings.plugins.display_eta.customTimeStringEnable == true, value: settings.plugins.display_eta.customTimeString">{{ _('Custom time string') }}
+            </label>
+        </div>
+    </div>
+    <legend>Printer Settings</legend>
+    <div class="control-group">
+        <div class="controls">
 			<label class="checkbox">
             <input type="checkbox" data-bind="checked: settings.plugins.display_eta.displayOnPrinter">{{ _('Display the ETA on your printers LCD screen') }}
             </label>
@@ -12,4 +24,3 @@
             </label>
         </div>
     </div>
-</form>
