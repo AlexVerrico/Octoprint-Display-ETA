@@ -64,7 +64,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             removeColons=False,
             updateInterval=10.0,
             customTimeStringEnable=False,
-            customTimeString="hh:mm:ss a"
+            customTimeString="ETA is hh:mm:ss a"
         )
 
     # Function to run when the settings are saved
@@ -80,11 +80,11 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         elif self._settings.get(["time24hr"]) is True:
             self.logger.debug('24HR = True')
             # See http://babel.pocoo.org/en/latest/dates.html#time-fields for details on the time format
-            self.CustomTimeFormat = "HH:mm:ss"
+            self.CustomTimeFormat = "ETA is HH:mm:ss"
         else:
             self.logger.debug('24HR = False')
             # See http://babel.pocoo.org/en/latest/dates.html#time-fields for details on the time format
-            self.CustomTimeFormat = "hh:mm:ss a"
+            self.CustomTimeFormat = "ETA is hh:mm:ss a"
 
         # Check if the user has chosen to display the ETA on the printer LCD
         if self._settings.get(["displayOnPrinter"]) is True:
@@ -280,10 +280,10 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             # Check if the user has chosen to remove colons from the output to the printer LCD
             if self.replaceColons is True:
                 # Send the ETA to the printer LCD, minus the colons
-                self._printer.commands("M117 ETA is {}".format(self.eta_string.replace(":", " ")))
+                self._printer.commands("M117 {}".format(self.eta_string.replace(":", " ")))
             else:
                 # Send the ETA to the printer LCD
-                self._printer.commands("M117 ETA is {}".format(self.eta_string))
+                self._printer.commands("M117 {}".format(self.eta_string))
         return
 
     # Function to tell Octoprint how to update the plugin
