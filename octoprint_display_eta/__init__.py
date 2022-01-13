@@ -34,8 +34,11 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         # Check if the user has chosen to display the ETA on the printer LCD
         self.doM117 = self._settings.get(['displayOnPrinter'])
 
-        # Check if the user has chosen to use 24hr time
-        if self._settings.get(['time24hr']) is True:
+        # Check for custom time string
+        if (self._settings.get("customTimeStringEnable") is True) and (len(self._settings.get("customTimeString")) > 0):
+            self.CustomTimeFormat = self._settings.get("customTimeString")
+        # Else check if the user has chosen to use 24hr time
+        elif self._settings.get(['time24hr']) is True:
             # See http://babel.pocoo.org/en/latest/dates.html#time-fields
             self.CustomTimeFormat = "HH:mm:ss"
         else:
@@ -59,7 +62,9 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             time24hr=False,
             displayOnPrinter=True,
             removeColons=False,
-            updateInterval=10.0
+            updateInterval=10.0,
+            customTimeStringEnable=False,
+            customTimeString="hh:mm:ss a"
         )
 
     # Function to run when the settings are saved
@@ -67,12 +72,15 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         # Store the new settings values for easy access
         octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
 
-        # Check if the user has chosen to use 24hr time
-        if self._settings.get(["time24hr"]) is True:
+        # Check if the user has chosen a custom time string
+        if (self._settings.get("customTimeStringEnable") is True) and (len(self._settings.get("customTimeString")) > 0):
+            self.logger.debug('CTS = True')
+            self.CustomTimeFormat = self._settings.get("customTimeString")
+        # Else check if the user has chosen to use 24hr time
+        elif self._settings.get(["time24hr"]) is True:
             self.logger.debug('24HR = True')
             # See http://babel.pocoo.org/en/latest/dates.html#time-fields for details on the time format
             self.CustomTimeFormat = "HH:mm:ss"
-            pass
         else:
             self.logger.debug('24HR = False')
             # See http://babel.pocoo.org/en/latest/dates.html#time-fields for details on the time format
@@ -239,7 +247,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         current_time = datetime.datetime.today()
         # Add the time left for the current print to the current time and date
         finish_time = current_time + datetime.timedelta(0, time_left)
-        # Format the time according to the users choice (either 12hr or 24hr time)
+        # Format the time according to the users choice (either 12hr / 24hr time or custom time string)
         strtime = format_time(finish_time, self.CustomTimeFormat)
         self.logger.debug('strtime = ' + strtime)
         # Create an empty string to store the finish date for the print
