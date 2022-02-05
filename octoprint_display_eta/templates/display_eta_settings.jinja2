@@ -8,6 +8,9 @@
             <input type="checkbox" data-bind="checked: settings.plugins.display_eta.displayOnPrinter">{{ _('Display the ETA on your printers LCD screen') }}
             </label>
 			<label class="checkbox">
+            <input type="checkbox" data-bind="checked: settings.plugins.display_eta.m117OnlyWhilstPrinting">{{ _('Only display ETA on the LCD when the printer is printing') }}
+            </label>
+			<label class="checkbox">
             <input type="checkbox" data-bind="checked: settings.plugins.display_eta.removeColons">{{ _('Remove all colons(:) from the time that is displayed on the printer (required for certain printer firmwares)') }}
             </label>
         </div>
