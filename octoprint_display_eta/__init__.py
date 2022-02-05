@@ -274,9 +274,9 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         # Send the current ETA to the Web UI
         self._plugin_manager.send_plugin_message(self._identifier, dict(eta_string=self.eta_string))
         # Check if the user has chosen to display the ETA on the printer LCD
-        if self.doM117 is True:
+        if self.doM117 is True and (self._printer.is_printing() or not self.doM117OnlyWhilstPrinting):
             # Check if the user has chosen to remove colons from the output to the printer LCD
-            if self.doM117 is True and (self._printer.is_printing() or not self.doM117OnlyWhilstPrinting):
+            if self.replaceColons is True:
                 # Send the ETA to the printer LCD, minus the colons
                 self._printer.commands("M117 ETA is {}".format(self.eta_string.replace(":", " ")))
             else:
