@@ -1,12 +1,10 @@
 # coding=utf-8
-from __future__ import absolute_import
-from email.utils import format_datetime
-
 import octoprint.plugin
 from octoprint.util import RepeatedTimer
+
 from datetime import datetime, timedelta
 import logging
-from babel import Locale, default_locale, localedata
+from babel import default_locale, localedata
 from babel.dates import format_datetime
 import flask
 
