@@ -34,11 +34,14 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         # Check if the user has chosen to display the ETA on the printer LCD
         self.doM117 = self._settings.get(['displayOnPrinter'])
 
+        # Check if the user wants M117 only whilst printing
+        self.doM117OnlyWhilstPrinting = self._settings.get(['m117OnlyWhilstPrinting'])
         # Check for custom time string
         if (self._settings.get(["customTimeStringEnable"]) is True) and (len(self._settings.get(["customTimeString"])) > 0):
             self.CustomTimeFormat = self._settings.get(["customTimeString"])
         # Else check if the user has chosen to use 24hr time
         elif self._settings.get(['time24hr']) is True:
+
             # See http://babel.pocoo.org/en/latest/dates.html#time-fields
             self.CustomTimeFormat = "'ETA is 'HH:mm:ss"
         else:
@@ -94,6 +97,9 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         else:
             self.doM117 = False
             self.logger.debug('M117 = False')
+
+        self.doM117OnlyWhilstPrinting = self._settings.get(['m117OnlyWhilstPrinting'])
+        self.logger.debug('M117 only whilst printing: {}'.format(self.doM117OnlyWhilstPrinting))
 
         # Check if the user has chosen to remove colons from the ETA displayed on the printer LCD
         if self._settings.get(["removeColons"]) is True:
@@ -277,7 +283,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
         # Send the current ETA to the Web UI
         self._plugin_manager.send_plugin_message(self._identifier, dict(eta_string=self.eta_string))
         # Check if the user has chosen to display the ETA on the printer LCD
-        if self.doM117 is True:
+        if self.doM117 is True and (self._printer.is_printing() or not self.doM117OnlyWhilstPrinting):
             # Check if the user has chosen to remove colons from the output to the printer LCD
             if self.replaceColons is True:
                 # Send the ETA to the printer LCD, minus the colons
