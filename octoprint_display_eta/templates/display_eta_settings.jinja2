@@ -1,11 +1,26 @@
-<form class="form-horizontal">
+<h3>{{ _('OctoPrint Display ETA') }} <small>{{ _('Version') }}: <span data-bind="text: settings.plugins.display_eta.installed_version"/></small></h3>
+    <legend>Time Format</legend>
     <div class="control-group">
         <div class="controls">
             <label class="checkbox">
-            <input type="checkbox" data-bind="checked: settings.plugins.display_eta.time24hr">{{ _('Use 24HR time instead of 12HR') }}
+            <input type="checkbox" data-bind="disable: settings.plugins.display_eta.customTimeStringEnable, checked: settings.plugins.display_eta.time24hr">{{ _('Use 24HR time instead of 12HR') }}
             </label>
+            <label class="checkbox">
+            <input type="checkbox" data-bind="disable: settings.plugins.display_eta.time24hr, checked: settings.plugins.display_eta.customTimeStringEnable">{{ _('Use a custom Babel time string') }}
+            </label>
+            <label>
+            <div data-bind="visible: settings.plugins.display_eta.customTimeStringEnable">
+            <label for="cts_input">Custom time string</label>
+                <input type="text" name="cts_input" data-bind="value: settings.plugins.display_eta.customTimeString">
+            </div>
+            </label>
+        </div>
+    </div>
+    <legend>Printer Settings</legend>
+    <div class="control-group">
+        <div class="controls">
 			<label class="checkbox">
-            <input type="checkbox" data-bind="checked: settings.plugins.display_eta.displayOnPrinter">{{ _('Display the ETA on your printers LCD screen') }}
+            <input type="checkbox" data-bind="checked: settings.plugins.display_eta.displayOnPrinter">{{ _('Display the ETA on your printer\'s LCD screen') }}
             </label>
 			<label class="checkbox">
             <input type="checkbox" data-bind="checked: settings.plugins.display_eta.m117OnlyWhilstPrinting">{{ _('Only display ETA on the LCD when the printer is printing') }}
@@ -15,4 +30,3 @@
             </label>
         </div>
     </div>
-</form>
