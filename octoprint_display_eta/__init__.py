@@ -68,7 +68,7 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             updateInterval=10.0,
             customTimeStringEnable=False,
             customTimeString="'ETA is 'hh:mm:ss a",
-            locale=default_locale('LC_TIME') if len(default_locale('LC_TIME')) > 0 and (default_locale('LC_TIME') in localedata.locale_identifiers()) else "en_US"
+            locale=default_locale('LC_TIME') if default_locale('LC_TIME') is not None and (default_locale('LC_TIME') in localedata.locale_identifiers()) else "en_US"
         )
 
     # Function to run when the settings are saved
