@@ -123,6 +123,12 @@ class DisplayETAPlugin(octoprint.plugin.AssetPlugin,
             dict(type="settings", custom_bindings=False)
         ]
 
+    # Function to pass the 'version' variable to template
+    def get_template_vars(self):
+        return dict(
+            version=self._plugin_version
+        )
+
     ########################
     # ProgressPlugin Mixin #
     ########################
